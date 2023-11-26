@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UseAuthListener from "./hooks/UseAuthListener";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Login from "./pages/Login";
+import * as ROUTES from "./constants/routes";
+import SignUp from "./pages/SignUp";
+import NotFound from "./pages/NotFound";
+import Dashboard from "./pages/Dashboard";
+import UserContext from "./context/user";
+import Explore from "./pages/Explore";
+import Search from "./pages/Search";
+import Messages from "./pages/Messages";
+import Profile from "./pages/Profile";
+import Notifications from "./pages/Notifications";
+import AddPost from "./components/AddPost";
 
 function App() {
+  const { user } = UseAuthListener();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <UserContext.Provider value={{ user }}>
+        <BrowserRouter>
+          <Routes>
+            <Route path={ROUTES.LOGIN} element={<Login />} />
+            <Route path={ROUTES.SIGN_UP} element={<SignUp />} />
+            <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+            <Route path={ROUTES.SEARCH} element={<Search />} />
+            <Route path={ROUTES.EXPLORE} element={<Explore />} />
+            <Route path={ROUTES.MESSAGES} element={<Messages />} />
+            <Route path={ROUTES.PROFILE} element={<Profile />} />
+            <Route path={ROUTES.NOTIFICATION} element={<Notifications />} />
+            <Route path={ROUTES.ADDPOST} element={<AddPost />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </UserContext.Provider>
     </div>
   );
 }
