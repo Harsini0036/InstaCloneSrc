@@ -1,6 +1,4 @@
-/* eslint-disable no-plusplus */
-// NOTE: replace 'NvPY9M9MzFTARQ6M816YAzDJxZ72' with your Firebase auth user id (can be taken from Firebase)
-//email: fragon1929@gmail.com
+
 
 export function seedDatabase(firebase) {
   /*const users = [
@@ -8,7 +6,7 @@ export function seedDatabase(firebase) {
       userId: "5q56uXkTOSTI0SYTHlY8rPnW02k2",
       username: "Neo",
       fullName: "Neo",
-      emailAddress: "fragon1929@gmail.com",
+      emailAddress: "x@gmail.com",
       following: ["2"],
       followers: ["2", "3", "4"],
       dateCreated: Date.now(),
